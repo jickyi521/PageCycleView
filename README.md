@@ -3,5 +3,5 @@
 
 
 <p align="left" >
-  <img src="PageCycle.gif" alt="PageCycle" title="PageCycle" width = "320">
+  <img src="EQPageCycle.gif" alt="EQPageCycle" title="EQPageCycle" width = "320">
 </p>
