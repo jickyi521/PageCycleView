@@ -1,5 +1,5 @@
 # PageCycleView
-仿照appstore三张无线轮播图
+仿照appstore三张无限轮播图
 
 
 <p align="left" >
