@@ -1,0 +1,17 @@
+//
+//  EQPageCycle-Prefix.pch
+//  EQPageCycle
+//
+//  Created by Eason Qian on 15/9/13.
+//  Copyright (c) 2015年 Eason Qian. All rights reserved.
+//
+
+#ifndef EQPageCycle_EQPageCycle_Prefix_pch
+#define EQPageCycle_EQPageCycle_Prefix_pch
+
+#import "EQPageCycleSize.h"
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif

@@ -23,7 +23,7 @@
     [super viewDidLoad];
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.bannerView = [[EQBannerView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 150)];
+    self.bannerView = [[EQBannerView alloc] initWithFrame:CGRectMake(0, 64, UI_CURRENT_SCREEN_WIDTH, 150)];
     [self.view addSubview:self.bannerView];
     [self.bannerView setupBannerView];
      self.bannerView.pageView.dataSource = self;
@@ -37,10 +37,26 @@
     return 10;
 }
 
-- (void)pageView:(EQPageCyclePageImageView *)aPageView didSelectedPageAtIndex:(NSUInteger)aIndex
+//#pragma mark -Roate Screen
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration//for  ios7
 {
-    
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    [self roateScreen];
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator//for ios8 up
+{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    [self roateScreen];
+}
+
+- (void)roateScreen
+{
+    
+//    CGRect frame = self.bannerView.frame;
+//    frame.size.width = UI_CURRENT_SCREEN_WIDTH;
+//    self.bannerView.frame = frame;
+}
 
 @end

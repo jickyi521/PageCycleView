@@ -46,6 +46,8 @@
 		9B9063A21BA1B88F00DCA180 /* EQPageCyclePageImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EQPageCyclePageImageView.m; sourceTree = "<group>"; };
 		9B9063A71BA1C24300DCA180 /* EQBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EQBannerView.h; sourceTree = "<group>"; };
 		9B9063A81BA1C24300DCA180 /* EQBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EQBannerView.m; sourceTree = "<group>"; };
+		B404956D1BA53A6A00006959 /* EQPageCycleSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EQPageCycleSize.h; sourceTree = "<group>"; };
+		B404956E1BA53AFB00006959 /* EQPageCycle-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EQPageCycle-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				9B9063771BA1B83200DCA180 /* EQPageCycle */,
+				B404956E1BA53AFB00006959 /* EQPageCycle-Prefix.pch */,
 				9B9063911BA1B83200DCA180 /* EQPageCycleTests */,
 				9B9063761BA1B83200DCA180 /* Products */,
 			);
@@ -99,6 +102,7 @@
 				9B9063A21BA1B88F00DCA180 /* EQPageCyclePageImageView.m */,
 				9B9063A71BA1C24300DCA180 /* EQBannerView.h */,
 				9B9063A81BA1C24300DCA180 /* EQBannerView.m */,
+				B404956D1BA53A6A00006959 /* EQPageCycleSize.h */,
 			);
 			path = EQPageCycle;
 			sourceTree = "<group>";
@@ -362,9 +366,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EQPageCycle-Prefix.pch";
 				INFOPLIST_FILE = EQPageCycle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MODULEMAP_PRIVATE_FILE = "EQPageCycle-Prefix.h";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -374,9 +381,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = EQPageCycle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MODULEMAP_PRIVATE_FILE = "EQPageCycle-Prefix.h";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -434,6 +443,7 @@
 				9B90639A1BA1B83200DCA180 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9B90639B1BA1B83200DCA180 /* Build configuration list for PBXNativeTarget "EQPageCycleTests" */ = {
 			isa = XCConfigurationList;
@@ -442,6 +452,7 @@
 				9B90639D1BA1B83200DCA180 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

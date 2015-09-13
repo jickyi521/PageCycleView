@@ -85,7 +85,7 @@
 
 @property (nonatomic) NSInteger itemHeight;
 
-- (instancetype)initWithFrame:(CGRect)frame gapWidth:(CGFloat)gapWidth itemWidth:(CGFloat)itemWidth itemHeight:(CGFloat)itemHeight;
+- (instancetype)initWithFrame:(CGRect)frame itemWidth:(CGFloat)itemWidth itemHeight:(CGFloat)itemHeight;
 /**
  *  刷新数据
  */

@@ -16,6 +16,7 @@
 @property (nonatomic) NSUInteger pageCount;
 @property (nonatomic) CGFloat itemWidth;
 @property (nonatomic) CGFloat itemGapWidth;
+@property (nonatomic) NSUInteger animateNum;
 
 @property (nonatomic, strong) NSTimer *weakTimer;
 @property (nonatomic, strong) NSMutableArray *itemPages;
@@ -24,15 +25,16 @@
 
 @implementation EQPageCyclePageImageView
 
-- (instancetype)initWithFrame:(CGRect)frame gapWidth:(CGFloat)gapWidth itemWidth:(CGFloat)itemWidth itemHeight:(CGFloat)itemHeight
+- (instancetype)initWithFrame:(CGRect)frame itemWidth:(CGFloat)itemWidth itemHeight:(CGFloat)itemHeight
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.translatesAutoresizingMaskIntoConstraints = NO;
-        self.backgroundColor = [UIColor clearColor];
         self.itemWidth = itemWidth;
         self.itemHeight = itemHeight;
-        self.itemGapWidth = gapWidth;
+        self.itemGapWidth = (UI_CURRENT_SCREEN_WIDTH-itemWidth)/2;
+        
+        self.translatesAutoresizingMaskIntoConstraints = NO;
+        self.backgroundColor = [UIColor clearColor];
         [self p_EQPageCyclePageImageView_setup];
     }
     return self;
@@ -54,7 +56,14 @@
     [self addConstraint: [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
     [self addConstraint: [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
     [self addConstraint: [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1 constant:self.itemGapWidth]];
-    [self addConstraint: [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:self.itemWidth]];
+    [self addConstraint: [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1 constant:-self.itemGapWidth]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doRetateAction) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -177,6 +186,7 @@
 
 - (void)animationInRow:(NSInteger)row
 {
+    self.animateNum = row;
     UILabel *lableView = (UILabel *)[self.itemPages objectAtIndex:row];
     if (!lableView) {
         return;
@@ -192,7 +202,15 @@
         lableView.alpha = 1;
     }];
     
-    //        NSLog(@"%s   %li", __PRETTY_FUNCTION__, (long)row);
+    // NSLog(@"%s   %li", __PRETTY_FUNCTION__, (long)row);
+}
+
+- (void)doRetateAction
+{
+    self.itemWidth = (UI_CURRENT_SCREEN_WIDTH - 2*self.itemGapWidth);
+    self.startPageIndex = self.animateNum;
+    [self reloadData];
+
 }
 
 - (UIColor *)randomColor
@@ -250,7 +268,7 @@
     }
     [self animationInRow:row >= (self.totalPageCount - 2)?currentPageCount:row];
     
-    //        NSLog(@"%s  row = %li ", __PRETTY_FUNCTION__, (long)row);
+    // NSLog(@"%s  row = %li ", __PRETTY_FUNCTION__, (long)row);
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
