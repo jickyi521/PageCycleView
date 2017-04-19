@@ -1,0 +1,2 @@
+/Users/qianyi/Library/Developer/Xcode/DerivedData/EQPageCycle-exkbckfegzessqgtnxtfcswofkxd/Build/Products/Debug-iphonesimulator/EQPageCycle.app
+iPhone Developer

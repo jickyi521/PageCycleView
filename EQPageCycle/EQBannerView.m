@@ -14,7 +14,7 @@
 - (void)setupBannerView
 {
     
-    self.pageView = [[EQPageCyclePageImageView alloc] initWithFrame:CGRectZero itemWidth:UI_CURRENT_SCREEN_WIDTH*2/3 itemHeight:self.frame.size.height];
+    self.pageView = [[EQPageCyclePageImageView alloc] initWithFrame:CGRectZero itemWidth:UI_CURRENT_SCREEN_WIDTH itemHeight:self.frame.size.height];
     [self addSubview:self.pageView];
     
     self.pageControl = [[UIPageControl alloc] init];

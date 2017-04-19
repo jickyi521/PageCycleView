@@ -28,6 +28,18 @@
     [self.bannerView setupBannerView];
      self.bannerView.pageView.dataSource = self;
     [self.bannerView.pageView reloadData];
+    
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 200, 40, 40)];
+    view.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:view];
+}
+
+- (void)injected
+{
+    
+    
+    NSLog(@"I've been injected: %@", self);
 }
 
 #pragma mark - <OTSCyclePageImageViewDataSource> && <OTSCyclePageImageViewDelegate>
